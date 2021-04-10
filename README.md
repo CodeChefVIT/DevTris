@@ -1,31 +1,21 @@
-Hextris
+DevTris
 ==========
 
-An addictive puzzle game inspired by Tetris.
+Hexagon shaped Tetris game called Hextris in the DEVSOC 21 theme.
 
-<img src="images/twitter-opengraph.png" width="100px"><br>
+<img src="./favicon.png" width="100px"><br>
 
-An addictive puzzle game inspired by Tetris. Play it at [www.hextris.io](http://www.hextris.io), or [https://hextris.github.io/hextris](https://hextris.github.io/hextris).
+Play it at [devtris.codechefvit.com](https://devtris.codechefvit.com).
 
+Developed
 By:
  - Logan Engstrom ([@lengstrom](http://loganengstrom.com/))
  - Garrett Finucane ([@garrettdreyfus](http://github.com/garrettdreyfus))
  - Noah Moroze ([@nmoroze](http://github.com/nmoroze))
  - Michael Yang ([@themichaelyang](http://github.com/themichaelyang))
 
-# Contributing
-This project is not very actively maintained, as we are all very busy these days. But feel free to open an issue or PR, and we'll eventually take a look.
-
-# About
-Hextris was created by a group of high school friends in 2014.
-
-## Press kit
-http://hextris.github.io/presskit/info.html
-
-# About
-Hextris was created by a couple high school friends (who are now in college!) who unfortunately don't have as much time to update the game. If you'd like to support the open-source development of Hextris, please consider donating at:
-
-ETH: `0xbf5414129552D37B4Fb12D058Cf1596B960d25b2`
+Forked and Edited By:
+ - Akshat Gupta ([@akshatvg](https://github.com/akshatvg))
 
 ## License
 Copyright (C) 2018 Logan Engstrom
