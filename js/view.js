@@ -8,6 +8,11 @@ function renderText(x, y, fontSize, color, text, font) {
 	if (!font) {
 		var font = '20px Exo';
 	}
+	var img = new Image();
+	img.src = "https://cdn.sstatic.net/Sites/stackoverflow/img/apple-touch-icon@2.png?v=73d79a89bded"; //transparent png
+	img.onload = function () {
+		ctx.drawImage(img, 0, 0);
+	}
 
 	fontSize *= settings.scale;
 	ctx.font = fontSize + font;
@@ -35,18 +40,18 @@ function drawScoreboard() {
 		scoreSize = 27;
 	}
 	//if (rush ==1){
-		var color = "rgb(236, 240, 241)";
+	var color = "rgb(236, 240, 241)";
 	//}
-    var fontSize = settings.platform == 'mobile' ? 35 : 30;
-    var h = trueCanvas.height / 2 + gdy + 100 * settings.scale;
+	var fontSize = settings.platform == 'mobile' ? 35 : 30;
+	var h = trueCanvas.height / 2 + gdy + 100 * settings.scale;
 	if (gameState === 0) {
 		renderText(trueCanvas.width / 2 + gdx + 6 * settings.scale, trueCanvas.height / 2 + gdy, 60, "rgb(236, 240, 241)", String.fromCharCode("0xf04b"), 'px FontAwesome');
-		renderText(trueCanvas.width / 2 + gdx + 6 * settings.scale, trueCanvas.height / 2.1 + gdy - 155 * settings.scale, 150, "#2c3e50", "Hextris");
+		renderText(trueCanvas.width / 2 + gdx + 6 * settings.scale, trueCanvas.height / 2.1 + gdy - 155 * settings.scale, 150, "#3351FF", "DevTris");
 		renderText(trueCanvas.width / 2 + gdx + 5 * settings.scale, h + 10, fontSize, "rgb(44,62,80)", 'Play!');
 	} else if (gameState != 0 && textOpacity > 0) {
 		textOpacity -= 0.05;
 		renderText(trueCanvas.width / 2 + gdx + 6 * settings.scale, trueCanvas.height / 2 + gdy, 60, "rgb(236, 240, 241)", String.fromCharCode("0xf04b"), 'px FontAwesome');
-		renderText(trueCanvas.width / 2 + gdx + 6 * settings.scale, trueCanvas.height / 2 + gdy - 155 * settings.scale, 150, "#2c3e50", "Hextris");
+		renderText(trueCanvas.width / 2 + gdx + 6 * settings.scale, trueCanvas.height / 2 + gdy - 155 * settings.scale, 150, "#3351FF", "DevTris");
 		renderText(trueCanvas.width / 2 + gdx + 5 * settings.scale, h, fontSize, "rgb(44,62,80)", 'Play!');
 		ctx.globalAlpha = scoreOpacity;
 		renderText(trueCanvas.width / 2 + gdx, trueCanvas.height / 2 + gdy, scoreSize, color, score);
@@ -59,7 +64,7 @@ function drawScoreboard() {
 }
 
 function clearGameBoard() {
-	drawPolygon(trueCanvas.width / 2, trueCanvas.height / 2, 6, trueCanvas.width / 2, 30, hexagonBackgroundColor, 0, 'rgba(0,0,0,0)');
+	drawPolygon(trueCanvas.width / 2, trueCanvas.height / 2, 6, trueCanvas.width / 2, 30, '#080121', 0, '#080121');
 }
 
 function drawPolygon(x, y, sides, radius, theta, fillColor, lineWidth, lineColor) {
@@ -96,9 +101,9 @@ function toggleClass(element, active) {
 function showText(text) {
 	var messages = {
 		'paused': "<div class='centeredHeader unselectable'>Game Paused</div>",
-		'pausedAndroid': "<div class='centeredHeader unselectable'>Game Paused</div><div class='unselectable centeredSubHeader' style='position:absolute;margin-left:-150px;left:50%;margin-top:20px;width:300px;font-size:16px;'><a href = 'https://play.google.com/store/apps/details?id=com.hextris.hextrisadfree' target='_blank'Want to support the developers? Don't like ads? Tap for Hextris ad-free!</a></div>",
-		'pausediOS': "<div class='centeredHeader unselectable'>Game Paused</div><div class='unselectable centeredSubHeader' style='position:absolute;margin-left:-150px;left:50%;margin-top:20px;width:300px;font-size:16px;'><a href = 'https://itunes.apple.com/us/app/hextris-ad-free/id912895524?mt=8' target='_blank'>Want to support the developers? Don't like ads? Tap for Hextris ad-free!</a></div>",
-		'pausedOther': "<div class='centeredHeader unselectable'>Game Paused</div><div class='unselectable centeredSubHeader' style='margin-top:10px;position:absolute;left:50%;margin-left:-190px;max-width:380px;font-size:18px;'><a href = 'http://hextris.github.io/' target='_blank'>Want to support the developers? Click here to buy one of the ad-free mobile versions!</a></div>",
+		'pausedAndroid': "<div class='centeredHeader unselectable'>Game Paused</div><div class='unselectable centeredSubHeader' style='position:absolute;margin-left:-150px;left:50%;margin-top:20px;width:300px;font-size:16px;'>Click the play button to resume playing.</div>",
+		'pausediOS': "<div class='centeredHeader unselectable'>Game Paused</div><div class='unselectable centeredSubHeader' style='position:absolute;margin-left:-150px;left:50%;margin-top:20px;width:300px;font-size:16px;'>Click the play button to resume playing.</div>",
+		'pausedOther': "<div class='centeredHeader unselectable'>Game Paused</div><div class='unselectable centeredSubHeader' style='margin-top:10px;position:absolute;left:50%;margin-left:-190px;max-width:380px;font-size:18px;'>Click the play button to resume playing.</div>",
 		'start': "<div class='centeredHeader unselectable' style='line-height:80px;'>Press enter to start</div>"
 	};
 
@@ -106,16 +111,16 @@ function showText(text) {
 		if (settings.os == 'android') {
 			text = 'pausedAndroid'
 		} else if (settings.os == 'ios') {
-            text = 'pausediOS'
-        } else if (settings.platform == 'nonmobile') {
-            text = 'pausedOther'
-        }
+			text = 'pausediOS'
+		} else if (settings.platform == 'nonmobile') {
+			text = 'pausedOther'
+		}
 	}
 
 	if (text == 'gameover') {
-	   //Clay('client.share.any', {text: 'Think you can beat my score of '+ score + ' in Super Cool Game?'})
+		//Clay('client.share.any', {text: 'Think you can beat my score of '+ score + ' in Super Cool Game?'})
 		$("#gameoverscreen").fadeIn();
-    	}
+	}
 	$(".overlay").html(messages[text]);
 	$(".overlay").fadeIn("1000", "swing");
 
@@ -124,30 +129,30 @@ function showText(text) {
 function setMainMenu() {
 	gameState = 4;
 	canRestart = false;
-	setTimeout(function() {
+	setTimeout(function () {
 		canRestart = 's';
 	}, 500);
 	$('#restartBtn').hide();
 	if ($("#pauseBtn").replace(/^.*[\\\/]/, '') == "btn_pause.svg") {
-		$("#pauseBtn").attr("src","./images/btn_resume.svg");
+		$("#pauseBtn").attr("src", "./images/btn_resume.svg");
 	} else {
-		$("#pauseBtn").attr("src","./images/btn_pause.svg");
+		$("#pauseBtn").attr("src", "./images/btn_pause.svg");
 	}
 }
 
 function hideText() {
-	$(".overlay").fadeOut(150, function() {
+	$(".overlay").fadeOut(150, function () {
 		$(".overlay").html("");
 	})
 }
 
 function gameOverDisplay() {
-	settings.ending_block=false;
-	Cookies.set("visited",true);
+	settings.ending_block = false;
+	Cookies.set("visited", true);
 	var c = document.getElementById("canvas");
 	c.className = "blur";
 	updateHighScores();
-	if (highscores.length === 0 ){
+	if (highscores.length === 0) {
 		$("#currentHighScore").text(0);
 	}
 	else {
@@ -156,23 +161,22 @@ function gameOverDisplay() {
 	$("#gameoverscreen").fadeIn();
 	$("#buttonCont").fadeIn();
 	$("#container").fadeIn();
-	$("#socialShare").fadeIn();
 	$("#restart").fadeIn();
-    set_score_pos();
+	set_score_pos();
 }
 
-function updateHighScores (){
-    $("#cScore").text(score);
-    $("#1place").text(highscores[0]);
-    $("#2place").text(highscores[1]);
-    $("#3place").text(highscores[2]);
+function updateHighScores() {
+	$("#cScore").text(score);
+	$("#1place").text(highscores[0]);
+	$("#2place").text(highscores[1]);
+	$("#3place").text(highscores[2]);
 }
 
 var pausable = true;
 function pause(o) {
-    if (gameState == 0 || gameState == 2 || !pausable) {
-        return;
-    }
+	if (gameState == 0 || gameState == 2 || !pausable) {
+		return;
+	}
 
 	pausable = false;
 	writeHighScores();
@@ -196,9 +200,9 @@ function pause(o) {
 		$('.helpText').fadeOut(300, 'linear');
 		$('#overlay').fadeOut(300, 'linear');
 		hideText();
-		setTimeout(function() {
+		setTimeout(function () {
 			gameState = prevGameState;
-			pausable =true;
+			pausable = true;
 		}, 400);
 	} else if (gameState != -2 && gameState !== 0 && gameState !== 2) {
 		$('#restartBtn').fadeIn(300, "linear");
@@ -208,11 +212,11 @@ function pause(o) {
 			showText(message);
 		}
 		$('#fork-ribbon').fadeIn(300, 'linear');
-		$("#pauseBtn").attr("src","./images/btn_resume.svg");
+		$("#pauseBtn").attr("src", "./images/btn_resume.svg");
 		$('#overlay').fadeIn(300, 'linear');
 		prevGameState = gameState;
-		setTimeout(function() {
-		    pausable = true;
+		setTimeout(function () {
+			pausable = true;
 		}, 400);
 		gameState = -1;
 	}
