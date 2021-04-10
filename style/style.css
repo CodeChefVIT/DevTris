@@ -483,10 +483,12 @@ body {
 .GOTitle {
 	font-weight: bold;
 	font-size: 24.2000px;
+	color: #ffffff;
 }
 
 .scoreNum {
 	font-weight: normal ! important;
+	color: #bdc3c7;
 }
 
 #cScore {
@@ -494,6 +496,7 @@ body {
 	font-weight: light;
 	margin-bottom: 5px;
 	margin-top: -10px;
+	color: #bdc3c7;
 }
 
 #highScoresTitle {

@@ -8,11 +8,6 @@ function renderText(x, y, fontSize, color, text, font) {
 	if (!font) {
 		var font = '20px Exo';
 	}
-	var img = new Image();
-	img.src = "https://cdn.sstatic.net/Sites/stackoverflow/img/apple-touch-icon@2.png?v=73d79a89bded"; //transparent png
-	img.onload = function () {
-		ctx.drawImage(img, 0, 0);
-	}
 
 	fontSize *= settings.scale;
 	ctx.font = fontSize + font;
